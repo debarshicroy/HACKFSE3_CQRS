@@ -15,38 +15,42 @@ public class ProductVO {
 
 	//Product Name Ø Short Description Ø Detailed Description Ø Category Ø Starting Price Ø Bid end date
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue
 	private long id;
-	private String product_name;
+	private String name;
 	private String short_desc;
 	private String detailed_desc;
 	private String category;
 	private double price;
 	private Date bidEndDate;
 	
-	
-	
-	
 	public ProductVO() {
 	}
 
 	@Override
 	public String toString() {
-		return "ProductVO [id=" + id + ", product_name=" + product_name + ", short_desc=" + short_desc
+		return "ProductVO [id=" + id + ", product_name=" + name + ", short_desc=" + short_desc
 				+ ", detailed_desc=" + detailed_desc + ", category=" + category + ", price=" + price + ", bidEndDate="
 				+ bidEndDate + "]";
 	}
 	
-	public ProductVO(long id, String product_name, String short_desc, String detailed_desc, String category,
+	public ProductVO(String name, String short_desc, String detailed_desc, String category,
 			double price, Date bidEndDate) {
 		super();
-		this.id = id;
-		this.product_name = product_name;
+		this.name = name;
 		this.short_desc = short_desc;
 		this.detailed_desc = detailed_desc;
 		this.category = category;
 		this.price = price;
 		this.bidEndDate = bidEndDate;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public long getId() {
@@ -57,12 +61,7 @@ public class ProductVO {
 		this.id = id;
 	}
 
-	public String getProduct_name() {
-		return product_name;
-	}
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
-	}
+	
 	public String getShort_desc() {
 		return short_desc;
 	}

@@ -1,5 +1,6 @@
 package com.command.service.dao.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,16 @@ public class TransactionImpl implements TransactionalInterface{
 	TransactionalRepository transactionalRepo;
 
 	@Override
-	public Optional<ProductVO> saveProduct(ProductVO pdt) {
+	public ProductVO saveProduct(ProductVO pdt) {
 		// TODO Auto-generated method stub
-		transactionalRepo.save(pdt);
-		Optional<ProductVO> pdt1 = transactionalRepo.findById(pdt.getId());
-		return pdt1;
+		
+		  List<ProductVO> list = transactionalRepo.findByName(pdt.getName());
+		  if(list.size()>0) { pdt.setId(list.get(0).getId()); }
+		 		
+		System.out.println("Save product:"+pdt.toString());
+		ProductVO vo = transactionalRepo.save(pdt);
+		
+		return vo;
 	}
 
 	@Override

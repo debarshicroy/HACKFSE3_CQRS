@@ -10,7 +10,7 @@ import com.command.service.vo.ProductVO;
 
 public interface TransactionalInterface {
 
-	Optional<ProductVO> saveProduct(ProductVO pdt);
+	ProductVO saveProduct(ProductVO pdt);
 	
 	ProductVO updateProduct(ProductVO pdt);
 	
