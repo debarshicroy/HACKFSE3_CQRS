@@ -1,7 +1,7 @@
 KAFKA commands:
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
 .\bin\windows\kafka-server-start.bat .\config\server.properties
-.\bin\kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic --from-beginning
+.\bin\kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my_topic --from-beginning
 .\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
 .\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic --from-beginning
 
@@ -22,3 +22,10 @@ K1XJDT64Daj2Iq6FhVTW3DZG4lWVvfUvVKevdqCP
 
 DB:
 mysqlsh -h auctiondb.c7n3kejakukb.us-east-1.rds.amazonaws.com -P 3306 -u admin
+> \sql 
+
+
+Kartheek:
+Access id: AKIAZINOXPRXGB43KL7A
+Secret access id: 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
+Password: PYkTUyIU)W'#loI

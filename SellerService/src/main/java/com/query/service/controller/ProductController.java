@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.query.service.kafka.KafkaSender;
+import com.query.service.repository.DynamoDBRepository;
 import com.query.service.repository.ProductRepository;
 import com.query.service.vo.ProductDO;
+import com.query.service.vo.ProductInfo;
 
 @RestController
 public class ProductController {
@@ -17,6 +19,9 @@ public class ProductController {
 	KafkaSender kafkaSender;
 	
 	ProductRepository productRepo;
+	
+	@Autowired
+	private DynamoDBRepository dynamoDBRepository;
 	
 	public ProductController(ProductRepository productRepository) {
 		// TODO Auto-generated constructor stub
@@ -34,5 +39,12 @@ public class ProductController {
 		kafkaSender.sendObj(new ProductDO(1l,"sample","short desc","detail desc","cat",100.0, new Date()));
 		//kafkaSender.send("Hello");
 	}
+	
+	@GetMapping("/test")
+    public ProductInfo test() {
+		System.out.println("Test method()");
+		ProductInfo pdt = new ProductInfo("Bat", "bbba", "asdsadasdsa", "Sports", 101.10, new Date());
+        return dynamoDBRepository.saveProduct(pdt);
+    }
 	
 }

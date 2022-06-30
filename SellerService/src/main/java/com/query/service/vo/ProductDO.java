@@ -14,7 +14,7 @@ public class ProductDO {
 	@JsonProperty("id")
 	private long id;
 	@JsonProperty("product_name")
-	private String product_name;
+	private String name;
 	@JsonProperty("short_desc")
 	private String short_desc;
 	@JsonProperty("detailed_desc")
@@ -31,7 +31,7 @@ public class ProductDO {
 			double price, Date bidEndDate) {
 		super();
 		this.id = id;
-		this.product_name = product_name;
+		this.name = product_name;
 		this.short_desc = short_desc;
 		this.detailed_desc = detailed_desc;
 		this.category = category;
@@ -47,9 +47,39 @@ public class ProductDO {
 
 	@Override
 	public String toString() {
-		return "ProductDO [id=" + id + ", product_name=" + product_name + ", short_desc=" + short_desc
+		return "ProductDO [id=" + id + ", product_name=" + name + ", short_desc=" + short_desc
 				+ ", detailed_desc=" + detailed_desc + ", category=" + category + ", price=" + price + ", bidEndDate="
 				+ bidEndDate + "]";
+	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public String getShort_desc() {
+		return short_desc;
+	}
+
+
+	public String getDetailed_desc() {
+		return detailed_desc;
+	}
+
+
+	public String getCategory() {
+		return category;
+	}
+
+
+	public double getPrice() {
+		return price;
+	}
+
+
+	public Date getBidEndDate() {
+		return bidEndDate;
 	}
 	
 	
