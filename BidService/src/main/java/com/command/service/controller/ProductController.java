@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.command.service.dao.TransactionalInterface;
+import com.command.service.dao.impl.DynamoDBImpl;
+import com.command.service.vo.ProductInfo;
 import com.command.service.vo.ProductVO;
 
 @RestController
@@ -25,6 +27,15 @@ public class ProductController {
 		product.setBidEndDate(new Date());
 		System.out.println("Going to add product:"+product.toString());
 		ProductVO vo = interface1.saveProduct(product);
+		
+		
+		
+		  DynamoDBImpl dbImpl = new DynamoDBImpl(); ProductInfo pdt = new
+		  ProductInfo(); pdt.setName(product.getName());
+		  pdt.setCategory(product.getCategory()); dbImpl.createProduct(pdt);
+		 
+		 
+		
 		return vo.toString();
 	}
 }

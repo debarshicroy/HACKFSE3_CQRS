@@ -1,0 +1,24 @@
+KAFKA commands:
+.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+.\bin\kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic my-topic --from-beginning
+.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic my-topic
+.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic my-topic --from-beginning
+
+URLs:
+http://localhost:8090/e-auction/api/v1/buyer/send
+http://localhost:8090/e-auction/api/v1/seller/add-product
+
+
+
+RDS
+user name: admin
+pass: rootadmin
+
+AKIAZINOXPRXMKE5AGMP
+K1XJDT64Daj2Iq6FhVTW3DZG4lWVvfUvVKevdqCP
+
+
+
+DB:
+mysqlsh -h auctiondb.c7n3kejakukb.us-east-1.rds.amazonaws.com -P 3306 -u admin
