@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.command.service.dao.TransactionalInterface;
 import com.command.service.kafka.KafkaSender;
+import com.command.service.repository.BidRepository;
 import com.command.service.repository.TransactionalRepository;
+import com.command.service.vo.BidingDO;
 import com.command.service.vo.ProductDO;
 import com.command.service.vo.ProductVO;
 
@@ -16,6 +18,9 @@ public class TransactionImpl implements TransactionalInterface{
 	
 	@Autowired
 	TransactionalRepository transactionalRepo;
+	
+	@Autowired
+	BidRepository bidRepository;
 	
 	@Autowired
 	KafkaSender kafkaSender;
@@ -60,6 +65,20 @@ public class TransactionImpl implements TransactionalInterface{
 	public boolean deleteProduct(ProductVO pdt) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public BidingDO saveBid(BidingDO bidingDO) {
+		// TODO Auto-generated method stub
+		bidRepository.save(bidingDO);
+		return null;
+	}
+
+	@Override
+	public List<BidingDO> showBids(String productid) {
+		// TODO Auto-generated method stub
+		List<BidingDO> list = bidRepository.findByName(productid);
+		return list;
 	}
 
 }

@@ -1,10 +1,12 @@
 package com.command.service.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.command.service.dao.TransactionalInterface;
 import com.command.service.dao.impl.DynamoDBImpl;
+import com.command.service.vo.BidingDO;
 import com.command.service.vo.ProductInfo;
 import com.command.service.vo.ProductVO;
+import com.fasterxml.jackson.databind.JsonSerializable;
 
 @RestController
 public class ProductController {
@@ -37,5 +41,18 @@ public class ProductController {
 		 
 		
 		return vo.toString();
+	}
+	
+	@PostMapping("/place-bid")
+	public String placeBid(@RequestBody BidingDO bidingDO) {
+		interface1.saveBid(bidingDO);
+		return bidingDO.toString();
+	}
+	
+	@GetMapping("/show-bid/{productId}")
+	public String placeBid(@PathVariable("productId") String productid) {
+		List<BidingDO> list = interface1.showBids(productid);
+		
+		return list.get(0).toString();
 	}
 }
