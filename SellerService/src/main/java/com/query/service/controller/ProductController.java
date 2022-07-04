@@ -1,9 +1,11 @@
 package com.query.service.controller;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.query.service.kafka.KafkaSender;
@@ -43,8 +45,15 @@ public class ProductController {
 	@GetMapping("/test")
     public ProductInfo test() {
 		System.out.println("Test method()");
-		ProductInfo pdt = new ProductInfo("Bat", "bbba", "asdsadasdsa", "Sports", 101.10, new Date());
+		ProductInfo pdt = new ProductInfo("Ball", "bbba", "asdsadasdsa", "Sports", 101.10, new Date());
         return dynamoDBRepository.saveProduct(pdt);
+    }
+	
+	@GetMapping("/getData/{pName}")
+    public ProductInfo getData(@PathVariable("pName") String pName) {
+		System.out.println("Test method()");
+		List<ProductInfo> pdt = dynamoDBRepository.getProductByName(pName);
+		return pdt.get(0);
     }
 	
 }
