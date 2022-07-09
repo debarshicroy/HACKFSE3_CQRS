@@ -5,9 +5,9 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
+import com.command.service.vo.BidingDO;
 import com.command.service.vo.ProductDO;
 import com.query.service.repository.DynamoDBRepository;
-
 import com.query.service.vo.ProductInfo;
 
 @Service
@@ -16,6 +16,7 @@ public class KafkaReceiver {
 	private KafkaTemplate<String, String> kafkaTemplate;
 
 	static final String kafkaTopic = "my_topic";
+	static final String bidKafkaTopic = "my_topic1";
 	
 	@Autowired
 	private DynamoDBRepository dynamoDBRepository;
@@ -28,5 +29,15 @@ public class KafkaReceiver {
         ProductInfo pdt = new ProductInfo(productDO.getName(), productDO.getShort_desc(), productDO.getDetailed_desc() , productDO.getCategory(), productDO.getPrice(), productDO.getBidEndDate());
         
         dynamoDBRepository.saveProduct(pdt);
+    }
+	
+	@KafkaListener(topics = bidKafkaTopic, groupId = "group_id")
+    public void consume(BidingDO bidingDO) 
+    {
+        System.out.println(String.format("Message recieved -> %s", bidingDO.toString()));
+        
+        dynamoDBRepository.saveBid(bidingDO);
+        
+        System.out.println("Inserting successful");
     }
 }

@@ -64,14 +64,16 @@ public class TransactionImpl implements TransactionalInterface{
 	@Override
 	public boolean deleteProduct(ProductVO pdt) {
 		// TODO Auto-generated method stub
-		return false;
+		transactionalRepo.delete(pdt);
+		return true;
 	}
 
 	@Override
 	public BidingDO saveBid(BidingDO bidingDO) {
 		// TODO Auto-generated method stub
 		bidRepository.save(bidingDO);
-		return null;
+		kafkaSender.sendObj(bidingDO);
+		return bidingDO;
 	}
 
 	@Override

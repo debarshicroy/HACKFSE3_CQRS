@@ -34,9 +34,11 @@ public class ProductController {
 		
 		
 		
-		  DynamoDBImpl dbImpl = new DynamoDBImpl(); ProductInfo pdt = new
-		  ProductInfo(); pdt.setName(product.getName());
-		  pdt.setCategory(product.getCategory()); dbImpl.createProduct(pdt);
+		/*
+		 * DynamoDBImpl dbImpl = new DynamoDBImpl(); ProductInfo pdt = new
+		 * ProductInfo(); pdt.setName(product.getName());
+		 * pdt.setCategory(product.getCategory()); dbImpl.createProduct(pdt);
+		 */
 		 
 		 
 		
@@ -54,5 +56,13 @@ public class ProductController {
 		List<BidingDO> list = interface1.showBids(productid);
 		
 		return list.get(0).toString();
+	}
+	
+	@GetMapping("/delete/{productName}")
+	public String deleteProduct(@PathVariable("productName") String productName) {
+		ProductVO vo = new ProductVO();
+		vo.setName(productName);
+		interface1.deleteProduct(vo);
+		return "Product with name "+productName+" deleted";
 	}
 }

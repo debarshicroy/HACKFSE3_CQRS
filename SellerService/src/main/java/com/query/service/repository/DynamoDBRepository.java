@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
+import com.command.service.vo.BidingDO;
 import com.query.service.vo.ProductInfo;
 
 @Repository
@@ -31,4 +32,10 @@ public class DynamoDBRepository {
 		  java.util.List<ProductInfo> list = dynamoDBMapper.query(ProductInfo.class, queryExpression);		  
 	        return list;
 	    }
+	 
+	 public BidingDO saveBid(BidingDO info) {
+		 System.out.println("Save bid");
+	        dynamoDBMapper.save(info);
+	        return info;
+	 }
 }
