@@ -2,22 +2,17 @@ package com.command.service.controller;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.command.service.dao.TransactionalInterface;
-import com.command.service.dao.impl.DynamoDBImpl;
 import com.command.service.vo.BidingDO;
-import com.command.service.vo.ProductInfo;
 import com.command.service.vo.ProductVO;
-import com.fasterxml.jackson.databind.JsonSerializable;
 
 @RestController
 public class ProductController {
@@ -64,5 +59,11 @@ public class ProductController {
 		vo.setName(productName);
 		interface1.deleteProduct(vo);
 		return "Product with name "+productName+" deleted";
+	}
+	
+	@GetMapping("/showProducts")
+	public List<ProductVO> showProducts() {
+		List<ProductVO> list = interface1.showAllProducts();
+		return list;
 	}
 }

@@ -16,9 +16,10 @@ public class KafkaReceiver {
 
 	static final String kafkaTopic = "my_topic";
 
-	@KafkaListener(topics = kafkaTopic, groupId = "group_id")
-    public void consume(ProductDO productDO) 
-    {
-        System.out.println(String.format("Message recieved -> %s", productDO.toString()));
-    }
+	/*
+	 * @KafkaListener(topics = kafkaTopic, groupId = "group_id") public void
+	 * consume(ProductDO productDO) {
+	 * System.out.println(String.format("Message recieved -> %s",
+	 * productDO.toString())); }
+	 */
 }

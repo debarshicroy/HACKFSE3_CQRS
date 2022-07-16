@@ -83,4 +83,11 @@ public class TransactionImpl implements TransactionalInterface{
 		return list;
 	}
 
+	@Override
+	public List<ProductVO> showAllProducts() {
+		// TODO Auto-generated method stub
+		List<ProductVO> list = transactionalRepo.findAll();
+		return list;
+	}
+
 }

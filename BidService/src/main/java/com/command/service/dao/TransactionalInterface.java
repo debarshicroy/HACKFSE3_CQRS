@@ -1,5 +1,7 @@
 package com.command.service.dao;
 
+import java.util.List;
+
 import com.command.service.vo.BidingDO;
 import com.command.service.vo.ProductVO;
 
@@ -16,5 +18,7 @@ public interface TransactionalInterface {
 	BidingDO saveBid(BidingDO bidingDO);
 	
 	java.util.List<BidingDO> showBids(String productid);
+	
+	List<ProductVO> showAllProducts();
 	
 }
