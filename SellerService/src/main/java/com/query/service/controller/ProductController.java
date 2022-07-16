@@ -56,6 +56,10 @@ public class ProductController {
 		return pdt.get(0);
     }
 	
-	
+	@GetMapping("/showProducts")
+	public List<ProductInfo> showProducts() {
+		List<ProductInfo> list = dynamoDBRepository.getAllProducts();
+		return list;
+	}
 	 
 }
