@@ -17,6 +17,8 @@ import com.amazonaws.services.dynamodbv2.document.BatchGetItemOutcome;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.TableKeysAndAttributes;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.ComparisonOperator;
+import com.amazonaws.services.dynamodbv2.model.Condition;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.command.service.vo.BidingDO;
@@ -47,6 +49,29 @@ public class DynamoDBRepository {
 	        return list;
 	    }
 	 
+	 public java.util.List<ProductInfo> getProductById(String productId) {
+		 ProductInfo info = new ProductInfo();
+		 info.setId(productId);
+		 
+		  DynamoDBQueryExpression<ProductInfo> queryExpression =
+	                new DynamoDBQueryExpression<ProductInfo>()
+	                .withHashKeyValues(info)
+	                .withLimit(10);
+
+		  java.util.List<ProductInfo> list = dynamoDBMapper.query(ProductInfo.class, queryExpression);		  
+	        return list;
+	    }
+	 
+	 public java.util.List<ProductInfo> getProductByCategory(String prodcutCat) {
+		 DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+		 scanExpression.addFilterCondition("category", new Condition()                                           
+			       .withComparisonOperator(ComparisonOperator.EQ)                                                
+			       .withAttributeValueList(new AttributeValue().withS(prodcutCat)));
+		 java.util.List<ProductInfo> list = dynamoDBMapper.scan(ProductInfo.class, scanExpression);
+		 
+		return list;
+	 }
+	 
 	 public BidingDO saveBid(BidingDO info) {
 		 System.out.println("Save bid");
 	        dynamoDBMapper.save(info);
@@ -55,6 +80,12 @@ public class DynamoDBRepository {
 	 
 		public List<ProductInfo> getAllProducts() {
 			List<ProductInfo> list = dynamoDBMapper.scan(ProductInfo.class, new DynamoDBScanExpression());		  
+	        return list;
+			
+		}
+		
+		public List<BidingDO> getAllBids() {
+			List<BidingDO> list = dynamoDBMapper.scan(BidingDO.class, new DynamoDBScanExpression());		  
 	        return list;
 			
 		}

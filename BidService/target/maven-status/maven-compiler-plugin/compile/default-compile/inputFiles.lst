@@ -1,6 +1,7 @@
 D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\repository\DynamodbRepository.java
 D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\vo\ProductVO.java
 D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\config\DynamoDBRepository.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\config\SpringFoxConfig.java
 D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\vo\ProductDO.java
 D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\dao\impl\TransactionImpl.java
 D:\Work\Code\GIT\HACKFSE3_CQRS\BidService\src\main\java\com\command\service\dao\TransactionalInterface.java
