@@ -1,0 +1,46 @@
+<table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef> Product Category. </th>
+      <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Product Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef> Bid Starting Price </th>
+      <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="bidEndDate">
+      <th mat-header-cell *matHeaderCellDef> Bid End Date </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidEndDate | date:'dd-MM-yyyy'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <mat-cell *matCellDef="let row">
+        <button style="color: rgb(11, 12, 12);" mat-icon-button matTooltip="Click to Edit" class="iconbutton" (click)="editProduct(row)"color="primary">
+            <mat-icon aria-label="Edit">edit</mat-icon>
+          </button>
+        <button mat-icon-button matTooltip="Click to Delete" class="iconbutton" (click)="deleteProduct(row)"color="warn">
+            <mat-icon aria-label="Delete">delete</mat-icon>
+          </button>
+          </mat-cell>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  

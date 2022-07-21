@@ -1,0 +1,145 @@
+<div class="container">
+    <div [hidden]="submitted">
+      <h1>Add New Product</h1>
+      <form [formGroup]="addProductForm">
+        <div class="form-group">
+          <label for="productname">Product Category</label>
+          <select class="form-control" id="pCategory" required name="pCategory" formControlName="productCategory">
+            <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+          </select>
+         <div *ngIf="addProductForm.controls['productCategory'].touched && addProductForm.controls['productCategory'].errors?.required">Name is required</div>
+         <div *ngIf="addProductForm.controls['productCategory'].errors?.maxlength">Max length 5 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Product Name</label>
+          <input type="text" class="form-control" id="productname" formControlName="productName"
+                 required name="productName">
+         <div *ngIf="addProductForm.controls['productName'].touched && addProductForm.controls['productName'].errors?.required">Name is required</div>
+         <div *ngIf="addProductForm.controls['productName'].errors?.maxlength ">Max length 30 characters</div>
+         <div *ngIf="addProductForm.controls['productName'].errors?.minlength ">Min length 5 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Short Product  Description</label>
+          <input type="text" class="form-control" id="sProductDesc" formControlName="shortproductdesc"
+                 required name="shortproductdesc">
+         <div *ngIf="addProductForm.controls['shortproductdesc'].touched && addProductForm.controls['shortproductdesc'].errors?.required">Description is required</div>
+         <div *ngIf="addProductForm.controls['shortproductdesc'].errors?.maxlength">Max length 5 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Detailed Product  Description</label>
+          <textarea maxlength="200" rows="3" cols="50" type="text" class="form-control" id="sProductDesc" formControlName="detailedproductdesc"
+                 required name="shortproductdesc"></textarea>
+         <div *ngIf="addProductForm.controls['detailedproductdesc'].touched && addProductForm.controls['detailedproductdesc'].errors?.required">Detailed Description is required</div>
+         <div *ngIf="addProductForm.controls['detailedproductdesc'].errors?.maxlength">Max length 5 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Price</label>
+          <input (keypress)="keyPress($event)" type="text" class="form-control" id="productname" formControlName="price"
+                 required name="productName">
+         <div *ngIf="addProductForm.controls['price'].touched && addProductForm.controls['price'].errors?.required">price is required</div>
+         <div *ngIf="addProductForm.controls['price'].errors?.maxlength">Max length 5 characters</div>
+        </div>
+        
+        <div class="form-group">
+          <label for="bidEndDate">Bid End Date</label>
+        <input type="date" [min]="minDate" class="form-control" id="bidEndDate"
+                  name="bidEndDate" formControlName="bidEndDate">
+        <div *ngIf="addProductForm.controls['bidEndDate'].touched && addProductForm.controls['bidEndDate'].errors?.required">bidEndDate is required</div>            
+        </div>
+        <div class="form-group">
+          <label for="productname">First Name</label>
+          <input type="text"  class="form-control" id="firstName" formControlName="firstName"
+                 required name="firstName">
+         <div *ngIf="addProductForm.controls['firstName'].touched && addProductForm.controls['firstName'].errors?.required">First Name is required</div>
+         <div *ngIf="addProductForm.controls['firstName'].errors?.maxlength">Max length 5 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Last Name</label>
+          <input type="text" class="form-control" id="lastName" formControlName="lastName"
+                 required name="lastName">
+         <div *ngIf="addProductForm.controls['lastName'].touched && addProductForm.controls['lastName'].errors?.required">Last Name is required</div>
+         <div *ngIf="addProductForm.controls['lastName'].errors?.maxlength">Max length 5 characters</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Email </label>
+          <input type="text" class="form-control" id="lastName" formControlName="email"
+                 required name="email">
+         <div *ngIf="addProductForm.controls['email'].touched && addProductForm.controls['email'].errors?.required">email is required</div>
+         <div *ngIf="addProductForm.controls['email'].errors?.email">Invalid email</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Mobile No </label>
+          <input (keypress)="keyPress($event)" type="text" class="form-control" id="mobileNo" formControlName="mobileNo"
+                 required name="mobileNo">
+         <div *ngIf="addProductForm.controls['mobileNo'].touched && addProductForm.controls['mobileNo'].errors?.required">Mobile No is required</div>
+         <div *ngIf="addProductForm.controls['mobileNo'].errors?.email">Invalid Mobile No</div>
+        </div>
+        <div class="form-group">
+          <label for="productname">Pin Code</label>
+          <input (keypress)="keyPress($event)" type="text" class="form-control" id="pincode" formControlName="pincode"
+                 required name="pincode">
+         <div *ngIf="addProductForm.controls['pincode'].touched && addProductForm.controls['pincode'].errors?.required">pincode is required</div>
+         <div *ngIf="addProductForm.controls['pincode'].errors?.maxlength">Max length 6 Numbers</div>
+        </div>
+        <div class="form-group">
+          <label for="stateName">State City</label>
+          <select class="form-control" id="stateName" required name="stateName" formControlName="stateName">
+            <option *ngFor="let states of statesObj" [value]="pow">{{states.toponymName}}</option>
+          </select>
+         <div *ngIf="addProductForm.controls['stateName'].touched && addProductForm.controls['stateName'].errors?.required">State Name is required</div>
+        </div>
+        <br>
+        <button (click)="onSubmit()" type="submit" [disabled]="addProductForm.invalid" class="btn btn-success" >Submit</button>
+        
+  
+       <!-- NOT SHOWN IN DOCS -->
+       
+       <!-- - -->
+      </form>
+    </div>
+    <div
+      class="modal"
+      tabindex="-1"
+      role="dialog"
+      [ngStyle]="{'display':(showPopUp) ? 'block':'none'}">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Form Details</h4>
+          </div>
+          <div class="modal-body">
+            <p> Name : {{addProductForm.controls['productName'].value}}</p>
+            <p> Date : {{addProductForm.controls['bidEndDate'].value}}</p>
+      
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" 
+                    (click)="showPopUp=false">
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+  
+  
+  <style>
+    .no-style .ng-valid {
+    border-left: 1px  solid #CCC
+  }
+  
+    .no-style .ng-invalid {
+    border-left: 1px  solid #CCC
+  }
+  </style>
+  
+  
+  
+  <!-- 
+  Copyright 2017-2018 Google Inc. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license
+  -->

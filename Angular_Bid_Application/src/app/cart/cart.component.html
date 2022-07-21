@@ -1,0 +1,45 @@
+<h3>Cart</h3>
+
+<p>
+  <a routerLink="/shipping">Place Bids</a>
+</p>
+
+<!--<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }} </span>
+  <span>{{ item.price | currency }}</span>
+</div>-->
+
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name"> Product Name </label>
+    <input id="name" type="text" formControlName="productName" />
+  </div>
+
+  <div>
+    <label for="address"> Short Description </label>
+    <input id="address" type="text" formControlName="shortDescription" />
+  </div>
+  <div>
+    <label for="Detailed Description"> Detailed Description </label>
+    <input id="address" type="text" formControlName="detailedDescription" />
+  </div>
+  <div>
+    <label for="Detailed Description"> Category </label>
+    <input id="address" type="text" formControlName="category" />
+  </div>
+  <div>
+    <label for="Detailed Description"> Starting Price </label>
+    <input id="address" type="text" formControlName="price" />
+  </div>
+  <div>
+    <label for="Detailed Description"> Bid End Date </label>
+    <input id="address" type="text" formControlName="endDate" />
+  </div>
+  <button class="button" type="submit">Add new Product</button>
+</form>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->

@@ -38,3 +38,9 @@ mvn install -DskipTests
 docker-compose up -d
 docker-compose down
 docker-compose build
+
+
+Cognito:
+Pool id: us-east-1_h2TSKHUGH
+Client name: e-auction
+Client Id: 60jci95dmqj5ruaql4qdp9lb3r

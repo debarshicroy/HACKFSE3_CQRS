@@ -1,0 +1,105 @@
+<h2>Products</h2>
+<div class="example-label">Choose Products</div>
+<br />
+
+<br />
+<div class="container">
+  <div class="row custom-wrapper">
+    <div class="col-md-6">
+      <!-- Form starts -->
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="group-gap">
+          <div class="d-block my-3">
+            <div class="mb-3">
+              <select class="custom-select" formControlName="bidForm">
+                <option value="">Choose your Product</option>
+                <option *ngFor="let product of Products" [value]="product">
+                  {{ product }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="col-md-6">
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-danger btn-lg btn-block">
+            Get Product Details
+          </button>
+        </div>
+      </form>
+      <!-- Form ends -->
+    </div>
+  </div>
+</div>
+<br><br>
+<button class="btn btn-danger btn-lg btn-block" (click)="addproduct()">Add a Product</button>
+<h2>Product Details:</h2>
+<div style="text-align:center;" *ngIf="showProductInfo">
+  <table id="customers">
+    <tr>
+      <td>Product Name :</td>
+      <td>{{ productName }}</td>
+    </tr>
+    <tr>
+      <td>Product Description :</td>
+      <td>{{ productDescription }}</td>
+    </tr>
+    <tr>
+      <td>Detailed Description:</td>
+      <td>{{ detailproductDescription }}</td>
+    </tr>
+    <tr>
+      <td>Category:</td>
+      <td>{{ category }}</td>
+    </tr>
+    <tr>
+      <td>Starting Price:</td>
+      <td>{{ price | currency: 'INR':'symbol' }}</td>
+    </tr>
+    <tr>
+      <td>Bid End Date:</td>
+      <td>{{ todayWithPipe }}</td>
+    </tr>
+  </table>
+</div>
+<br />
+<div class="example-label">Show Bid amount</div>
+<div class="example-button-row">
+  <button mat-raised-button color="primary" (click)="counter()">
+    Click Here
+  </button>
+</div>
+<div *ngIf="showBid" class="example-container">
+  <table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="productName">
+      <th mat-header-cell *matHeaderCellDef> productName</th>
+      <td mat-cell *matCellDef="let element"> {{element.productName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="bidAmount">
+      <th mat-header-cell *matHeaderCellDef> Bid Amount. </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidAmount}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="bidderName">
+      <th mat-header-cell *matHeaderCellDef> Bidder Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidderName}} </td>
+    </ng-container>
+   
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at https://angular.io/license
+-->
