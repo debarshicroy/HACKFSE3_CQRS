@@ -35,7 +35,7 @@ export class AppComponent implements OnInit{
     }
   }
   assignUrl(){
-    let url='https://codehackfseverify.auth.us-east-1.amazoncognito.com/login?client_id=11msjde8bjnu12f4chriuidrju&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:4200/home';
+    let url='https://eauction.auth.us-east-1.amazoncognito.com/login?client_id=60jci95dmqj5ruaql4qdp9lb3r&response_type=code&scope=aws.cognito.signin.user.admin&redirect_uri=http://localhost:8083/home';
     window.location.assign(url);
   }
   

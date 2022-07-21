@@ -43,4 +43,5 @@ docker-compose build
 Cognito:
 Pool id: us-east-1_h2TSKHUGH
 Client name: e-auction
+Pool name: HACK-FSE-E-AUCTION
 Client Id: 60jci95dmqj5ruaql4qdp9lb3r
