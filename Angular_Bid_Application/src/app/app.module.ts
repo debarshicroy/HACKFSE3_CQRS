@@ -25,6 +25,7 @@ import { AppService } from './app.service';
 import { ModifyproductComponent } from './modifyproduct/modifyproduct.component';
 import { BuyerlandingpageComponent } from './buyerlandingpage/buyerlandingpage.component';
 import { PlacebidComponent } from './placebid/placebid.component';
+import { AuthenticationGuard } from './guards/authentication.guard';
 
 @NgModule({
   imports: [
@@ -37,14 +38,16 @@ import { PlacebidComponent } from './placebid/placebid.component';
     MaterialModule,
     BsDatepickerModule.forRoot(), 
     RouterModule.forRoot([
-      { path: '', component: LoginComponent },
-      { path: 'home', component: LandingpageComponent },
-      { path: 'seller', component: ProductListComponent },
-      { path: 'buyer',component:BuyerlandingpageComponent},
-      { path: 'addproduct', component: AddproductComponent },
-      { path: 'products/:productId', component: ProductDetailsComponent },
-      { path: 'modifyproduct', component: ModifyproductComponent },
-      { path: 'shipping', component: ShippingComponent },
+      //{ path: '', component: LoginComponent },
+      { path: 'home', component: LandingpageComponent,canActivate:[AuthenticationGuard] },
+      { path: 'seller', component: ProductListComponent,canActivate:[AuthenticationGuard] },
+      { path: 'buyer',component:BuyerlandingpageComponent,canActivate:[AuthenticationGuard]},
+      { path: 'addproduct', component: AddproductComponent,canActivate:[AuthenticationGuard] },
+      { path: 'products/:productId', component: ProductDetailsComponent,canActivate:[AuthenticationGuard] },
+      { path: 'modifyproduct', component: ModifyproductComponent,canActivate:[AuthenticationGuard] },
+      { path: 'shipping', component: ShippingComponent,canActivate:[AuthenticationGuard] },
+      { path: 'login', component: LoginComponent },
+      //{ path: 'login', component: AppComponent } //Enable for demo
     ]),
   ],
   providers: [AppService],

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-top-bar',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-bar.component.css'],
 })
 export class TopBarComponent implements OnInit {
-  constructor() {}
+  userName:string='';
+  constructor(private router:Router,private appService:AppService) {}
   enable: boolean = false;
   ngOnInit() {
     this.enable = false;
+    this.appService.infoMessage.subscribe(data => {
+      console.log('User Name --->'+data);
+      this.userName =data;
+    })
+    console.log('Inside the top bar service --->'+this.userName);
+  }
+  logout(){
+    sessionStorage.removeItem('jwtToken');
+    this.router.navigateByUrl("/login");
   }
 }
 

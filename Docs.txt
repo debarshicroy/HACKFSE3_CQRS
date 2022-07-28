@@ -21,7 +21,7 @@ K1XJDT64Daj2Iq6FhVTW3DZG4lWVvfUvVKevdqCP
 
 
 DB:
-mysqlsh -h auctiondb.c7n3kejakukb.us-east-1.rds.amazonaws.com -P 3306 -u admin
+mysqlsh -h auctiondb.cxcu7stcb9ac.us-east-1.rds.amazonaws.com -P 3306 -u admin
 > \sql 
 
 
@@ -45,3 +45,12 @@ Pool id: us-east-1_h2TSKHUGH
 Client name: e-auction
 Pool name: HACK-FSE-E-AUCTION
 Client Id: 60jci95dmqj5ruaql4qdp9lb3r
+
+
+http://localhost:8081/swagger-ui.html#/product-controller
+http://localhost:8082/swagger-ui.html
+
+
+
+debarshi.chandaroy@mml.local
+eriT5cS7

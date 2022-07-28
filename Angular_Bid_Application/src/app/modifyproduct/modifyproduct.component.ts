@@ -37,7 +37,7 @@ export class ModifyproductComponent implements OnInit {
   dataSource = new MatTableDataSource<any>([]);
   ngOnInit(): void {
     console.log('inside the modify product');
-    let url ="http://localhost:8082/showProducts";
+    let url ="http://git-LoadBal-13I1KPIEJGIGF-d07d85809da63425.elb.us-east-1.amazonaws.com:8081/showProducts";
     this.http.get(url,{responseType:'json'}).subscribe(x =>{
       this.BiddingElement.push(x);
       this.data = x;

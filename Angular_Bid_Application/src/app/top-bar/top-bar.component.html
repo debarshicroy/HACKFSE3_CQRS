@@ -2,9 +2,27 @@
   <h1>Welcome to eBidding Application</h1>
 </a>
 
-<a *ngIf="enable" routerLink="/addproduct" class="button fancy-button">
-  <i class="material-icons">shopping_cart</i>Add New Product
-</a>
+<!--<div> 
+  <mat-icon class="icon-display">account_circle</mat-icon>
+  <mat-select></mat-select>
+</div>-->
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon class="icon-display">account_circle</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>home</mat-icon>{{userName}}
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon>mail</mat-icon>
+    <span>Check Your Email</span>
+  </button>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Log Out</span>
+  </button>
+</mat-menu>
+
 
 <!-- 
 Copyright Google LLC. All Rights Reserved.
