@@ -54,7 +54,7 @@ export class ModifyproductComponent implements OnInit {
     let message = 'You Cant Delete a product after bid end date';
     this.alertDialog(message);
     }else{
-      let url ='http://localhost:8081/delete/productName='+row['name'];
+      let url ='http://localhost:8081/delete/'+row['name'];
       this.http.get(url,{responseType:'text'}).subscribe(x =>{
         this.alertDialog(x);
       });

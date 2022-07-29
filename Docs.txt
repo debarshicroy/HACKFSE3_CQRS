@@ -39,6 +39,9 @@ docker-compose up -d
 docker-compose down
 docker-compose build
 
+docker build -t debarshichandaroy19/hackfse3-backend-command-service:latest .
+docker push debarshichandaroy19/hackfse3-backend-command-service:latest
+
 
 Cognito:
 Pool id: us-east-1_h2TSKHUGH

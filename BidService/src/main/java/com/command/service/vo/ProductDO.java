@@ -25,19 +25,31 @@ public class ProductDO {
 	private double price;
 	@JsonProperty("bidEndDate")
 	private Date bidEndDate;
+	@JsonProperty
+	private String action;
 	
 
-	public ProductDO(long id, String product_name, String short_desc, String detailed_desc, String category,
-			double price, Date bidEndDate) {
+	public ProductDO(long id, String name, String short_desc, String detailed_desc, String category, double price,
+			Date bidEndDate, String action) {
 		super();
 		this.id = id;
-		this.name = product_name;
+		this.name = name;
 		this.short_desc = short_desc;
 		this.detailed_desc = detailed_desc;
 		this.category = category;
 		this.price = price;
 		this.bidEndDate = bidEndDate;
+		this.action = action;
 	}
+
+
+	/*
+	 * public ProductDO(long id, String product_name, String short_desc, String
+	 * detailed_desc, String category, double price, Date bidEndDate) { super();
+	 * this.id = id; this.name = product_name; this.short_desc = short_desc;
+	 * this.detailed_desc = detailed_desc; this.category = category; this.price =
+	 * price; this.bidEndDate = bidEndDate; }
+	 */
 
 
 	public ProductDO() {

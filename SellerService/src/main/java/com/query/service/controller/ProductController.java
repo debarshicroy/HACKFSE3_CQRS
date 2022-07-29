@@ -51,12 +51,12 @@ public class ProductController {
 		//kafkaSender.send("Hello");
 	}
 	
-	@GetMapping("/test")
-    public ProductInfo test() {
-		System.out.println("Test method()");
-		ProductInfo pdt = new ProductInfo("Ball", "bbba", "asdsadasdsa", "Sports", 101.10, new Date());
-        return dynamoDBRepository.saveProduct(pdt);
-    }
+	/*
+	 * @GetMapping("/test") public ProductInfo test() {
+	 * System.out.println("Test method()"); ProductInfo pdt = new
+	 * ProductInfo("Ball", "bbba", "asdsadasdsa", "Sports", 101.10, new Date());
+	 * return dynamoDBRepository.saveProduct(pdt); }
+	 */
 	
 	@GetMapping("/getData/{pName}")
     public ProductInfo getData(@PathVariable("pName") String pName) {

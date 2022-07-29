@@ -59,8 +59,13 @@ public class ProductController {
 	public String deleteProduct(@PathVariable("productName") String productName) {
 		ProductVO vo = new ProductVO();
 		vo.setName(productName);
-		interface1.deleteProduct(vo);
-		return "Product with name "+productName+" deleted";
+		boolean isDeleted = interface1.deleteProduct(vo);
+		if(isDeleted) {
+			return "Product with name "+productName+" deleted";	
+		}else {
+			return "Unable to delete";
+		}
+		
 	}
 	
 	@GetMapping("/showProducts")

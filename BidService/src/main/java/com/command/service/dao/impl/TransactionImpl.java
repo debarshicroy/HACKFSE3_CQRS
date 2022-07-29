@@ -34,7 +34,7 @@ public class TransactionImpl implements TransactionalInterface{
 		 		
 		System.out.println("Save product:"+pdt.toString());
 		ProductVO vo = transactionalRepo.save(pdt);
-		ProductDO productDO = new ProductDO(pdt.getId(),pdt.getName(), pdt.getShort_desc(), pdt.getDetailed_desc(), pdt.getCategory(), pdt.getPrice(), pdt.getBidEndDate());
+		ProductDO productDO = new ProductDO(pdt.getId(),pdt.getName(), pdt.getShort_desc(), pdt.getDetailed_desc(), pdt.getCategory(), pdt.getPrice(), pdt.getBidEndDate(),"add");
 		kafkaSender.sendObj(productDO);
 		return vo;
 	}
@@ -50,8 +50,7 @@ public class TransactionImpl implements TransactionalInterface{
 				System.out.println("Save product:" + pdt.toString());
 				ProductVO vo = transactionalRepo.save(pdt);
 				System.out.println("Bid amount updated successfully!!");
-				ProductDO productDO = new ProductDO(pdt.getId(),pdt.getName(), pdt.getShort_desc(), pdt.getDetailed_desc(), pdt.getCategory(), pdt.getPrice(), pdt.getBidEndDate());
-				
+				ProductDO productDO = new ProductDO(pdt.getId(),pdt.getName(), pdt.getShort_desc(), pdt.getDetailed_desc(), pdt.getCategory(), pdt.getPrice(), pdt.getBidEndDate(),"update");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -64,8 +63,23 @@ public class TransactionImpl implements TransactionalInterface{
 	@Override
 	public boolean deleteProduct(ProductVO pdt) {
 		// TODO Auto-generated method stub
-		transactionalRepo.delete(pdt);
-		return true;
+		System.out.println("Going to delete : "+pdt.toString());
+		List<ProductVO> list = transactionalRepo.findByName(pdt.getName());
+		
+		if(list.size()>0) {
+			
+			System.out.println(list.get(0).getId());
+			
+			transactionalRepo.deleteById(list.get(0).getId());
+			
+			ProductDO productDO = new ProductDO(pdt.getId(),pdt.getName(), pdt.getShort_desc(), pdt.getDetailed_desc(), pdt.getCategory(), pdt.getPrice(), pdt.getBidEndDate(),"delete");
+			kafkaSender.sendObj(productDO);
+			
+			return true;
+		}
+		
+		
+		return false;
 	}
 
 	@Override

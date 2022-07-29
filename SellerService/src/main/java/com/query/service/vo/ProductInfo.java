@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 @DynamoDBTable(tableName = "product_info")
 public class ProductInfo {
 	private String id;
+	private long productId;
 	private String name;
 	private String short_desc;
 	private String detailed_desc;
@@ -74,9 +75,18 @@ public class ProductInfo {
 	public void setBidEndDate(Date bidEndDate) {
 		this.bidEndDate = bidEndDate;
 	}
-	public ProductInfo(String name, String short_desc, String detailed_desc, String category, double price,
-			Date bidEndDate) {
+	@DynamoDBAttribute
+	public long getProductId() {
+		return productId;
+	}
+	public void setProductId(long productId) {
+		this.productId = productId;
+	}
+	
+	public ProductInfo(long productId, String name, String short_desc, String detailed_desc, String category,
+			double price, Date bidEndDate) {
 		super();
+		this.productId = productId;
 		this.name = name;
 		this.short_desc = short_desc;
 		this.detailed_desc = detailed_desc;

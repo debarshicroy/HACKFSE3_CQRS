@@ -24,11 +24,16 @@ public class KafkaReceiver {
 	@KafkaListener(topics = kafkaTopic, groupId = "group_id")
     public void consume(ProductDO productDO) 
     {
-        System.out.println(String.format("Message recieved -> %s", productDO.toString()));
+		System.out.println(String.format("Message recieved -> %s", productDO.toString()));
         
-        ProductInfo pdt = new ProductInfo(productDO.getName(), productDO.getShort_desc(), productDO.getDetailed_desc() , productDO.getCategory(), productDO.getPrice(), productDO.getBidEndDate());
+        ProductInfo pdt = new ProductInfo(productDO.getId(), productDO.getName(), productDO.getShort_desc(), productDO.getDetailed_desc() , productDO.getCategory(), productDO.getPrice(), productDO.getBidEndDate());
         
-        dynamoDBRepository.saveProduct(pdt);
+		if(productDO.getAction().equalsIgnoreCase("delete")) {
+			dynamoDBRepository.deleteProduct(pdt);
+		}else {
+			dynamoDBRepository.saveProduct(pdt);	
+		}
+        
     }
 	
 	@KafkaListener(topics = bidKafkaTopic, groupId = "group_id")

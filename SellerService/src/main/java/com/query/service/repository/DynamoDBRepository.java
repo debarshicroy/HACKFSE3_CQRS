@@ -89,5 +89,11 @@ public class DynamoDBRepository {
 	        return list;
 			
 		}
+		
+		public boolean deleteProduct(ProductInfo productInfo) {
+			System.out.println("Deleting "+productInfo.toString());
+			dynamoDBMapper.delete(productInfo);
+			return true;
+		}
 		 
 }

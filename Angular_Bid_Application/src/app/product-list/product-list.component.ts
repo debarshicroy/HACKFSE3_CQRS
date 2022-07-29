@@ -54,7 +54,7 @@ export class ProductListComponent implements OnInit {
     dataSource = new MatTableDataSource<any>([]);
    ngOnInit() {
     //this.dataSource.sort = this.sort;
-    let url ='http://localhost:8081/showAllbids';
+    let url ='http://localhost:8082/showAllbids';
     this.http.get(url,{responseType:'json'}).subscribe(x =>{
     this.BiddersInfo.push(x);
     this.data = x

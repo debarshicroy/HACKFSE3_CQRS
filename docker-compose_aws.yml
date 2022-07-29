@@ -1,0 +1,79 @@
+version: '2'
+x-aws-vpc: "vpc-05720eeeed083504c"
+services:
+    zookeeper:
+        image: confluentinc/cp-zookeeper:latest
+        environment:
+            ZOOKEEPER_CLIENT_PORT: 22181
+            ZOOKEEPER_TICK_TIME: 2000
+        ports:
+            - 22181:22181
+        networks:
+            - spring-cloud-network    
+  
+    kafka:
+        image: confluentinc/cp-kafka:latest
+        depends_on:
+            - zookeeper
+        ports:
+            - 29092:29092
+        environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:22181
+            KAFKA_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+            KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_HOST://localhost:29092
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+        networks:
+            - spring-cloud-network    
+    
+    command-service:
+        image: debarshichandaroy19/hackfse3-backend-command-service:latest
+        container_name: command
+        #build:
+        #    context: BidService
+        #    dockerfile: Dockerfile
+        depends_on:
+            - kafka
+            - zookeeper
+        ports:
+            - 8081:8081
+        networks:
+            - spring-cloud-network
+    
+    query-service:
+        container_name: query
+        build:
+            context: SellerService
+            dockerfile: Dockerfile
+        depends_on:
+            - kafka
+            - zookeeper
+        image: debarshichandaroy19/hackfse3-backend-query-service
+        ports:
+            - 8082:8082
+        networks:
+            - spring-cloud-network
+    # Frontend Service 
+    # app-client:
+    #     container_name: app-client
+    #     image: debarshichandaroy19/hackfse3-frontend
+    #     build:
+    #         context: Angular_Bid_Application # Use an image built from the specified dockerfile in the `angular-11-social-login` directory.
+    #         dockerfile: Dockerfile
+    #         # args:
+    #         #     API_BASE_URL: http://127.0.0.1:8080/
+    #     ports:
+    #         - "8083:8083" # Map the exposed port 80 on the container to port 8081 on the host machine
+    #     restart: always
+    #     # depends_on:
+    #     #     - kafka
+    #     #     - zookeeper
+    #     #     - command-service
+    #     #     - query-service
+    #     networks:
+    #         - spring-cloud-network             
+networks:
+    spring-cloud-network:
+        driver: bridge
