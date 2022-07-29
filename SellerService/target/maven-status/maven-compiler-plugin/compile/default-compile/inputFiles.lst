@@ -1,0 +1,13 @@
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\vo\BidingDO.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\vo\ProductDO.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\config\SpringFoxConfig.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\kafka\KafkaReceiver.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\QueryServiceApplication.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\repository\DynamoDBRepository.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\command\service\vo\ProductDO.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\vo\ProductInfo.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\repository\ProductRepository.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\command\service\vo\BidingDO.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\config\DynamoDBConfiguration.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\controller\ProductController.java
+D:\Work\Code\GIT\HACKFSE3_CQRS\SellerService\src\main\java\com\query\service\kafka\KafkaSender.java

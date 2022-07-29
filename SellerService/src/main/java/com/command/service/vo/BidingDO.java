@@ -57,15 +57,11 @@ public class BidingDO {
 	public void setBidAmount(double bidAmount) {
 		this.bidAmount = bidAmount;
 	}
-	public BidingDO(String name, String bidderName, double bidAmount) {
-		super();
-		this.name = name;
-		this.bidderName = bidderName;
-		this.bidAmount = bidAmount;
-	}
-	public BidingDO() {
-		super();
-	}
+	/*
+	 * public BidingDO(String name, String bidderName, double bidAmount) { super();
+	 * this.name = name; this.bidderName = bidderName; this.bidAmount = bidAmount; }
+	 * public BidingDO() { super(); }
+	 */
 	
 	
 	

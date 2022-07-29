@@ -53,9 +53,9 @@ public class ProductDO {
 	 */
 
 
-	public ProductDO() {
-		super();
-	}
+	/*
+	 * public ProductDO() { super(); }
+	 */
 
 
 	@Override
