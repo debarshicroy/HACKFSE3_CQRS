@@ -44,9 +44,9 @@ services:
     
     query-service:
         container_name: query
-        build:
-            context: SellerService
-            dockerfile: Dockerfile
+        #build:
+        #    context: SellerService
+        #    dockerfile: Dockerfile
         depends_on:
             - kafka
             - zookeeper
