@@ -47,6 +47,8 @@ docker-compose up -d
 docker-compose down
 docker-compose build
 
+aws ecs update-service --cluster docker --service docker-CommandserviceService-cnR0Pjiy7e5C --force-new-deployment
+
 
 Cognito:
 Pool id: us-east-1_h2TSKHUGH
@@ -62,3 +64,11 @@ http://localhost:8082/swagger-ui.html
 
 debarshi.chandaroy@mml.local
 eriT5cS7
+
+
+
+
+
+
+
+mysqlsh -h auctiondb.cmkzbrtkkatj.us-east-1.rds.amazonaws.com -P 3306 -u admin

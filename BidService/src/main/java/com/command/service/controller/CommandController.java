@@ -9,6 +9,6 @@ public class CommandController {
 
 	@GetMapping("/hello")
 	public String print() {
-		return "Hello docker print";
+		return "Hello docker print hello";
 	}
 }
