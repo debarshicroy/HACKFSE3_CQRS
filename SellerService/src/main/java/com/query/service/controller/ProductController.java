@@ -84,10 +84,13 @@ public class ProductController {
 		return list;
 	}
 	
-	@PostMapping("/showProductbyid")
-	public List<ProductInfo> showProductbyId(@RequestBody String productId) {
+	@GetMapping("/showProductbyid/{productId}")
+	public String showProductbyId(@PathVariable("productId") String productId) {
 		List<ProductInfo> list = dynamoDBRepository.getProductById(productId);
-		return list;
+		Gson gson = new Gson();
+	     // convert your list to json
+	     String jsonStr = gson.toJson(list.get(0));
+		return jsonStr;
 	}
 	
 	@GetMapping("/showAllbids")

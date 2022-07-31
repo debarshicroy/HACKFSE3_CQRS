@@ -50,15 +50,22 @@ public class DynamoDBRepository {
 	    }
 	 
 	 public java.util.List<ProductInfo> getProductById(String productId) {
-		 ProductInfo info = new ProductInfo();
-		 info.setId(productId);
-		 
-		  DynamoDBQueryExpression<ProductInfo> queryExpression =
-	                new DynamoDBQueryExpression<ProductInfo>()
-	                .withHashKeyValues(info)
-	                .withLimit(10);
+			/*
+			 * ProductInfo info = new ProductInfo(); info.setId(productId);
+			 * 
+			 * DynamoDBQueryExpression<ProductInfo> queryExpression = new
+			 * DynamoDBQueryExpression<ProductInfo>() .withHashKeyValues(info)
+			 * .withLimit(10);
+			 */
+		  System.out.println("Product ID : "+productId);
+		  DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
+		  scanExpression.addFilterCondition("productId", new Condition()                                           
+			       .withComparisonOperator(ComparisonOperator.EQ)                                                
+			       .withAttributeValueList(new AttributeValue().withN(productId)));
+		  
 
-		  java.util.List<ProductInfo> list = dynamoDBMapper.query(ProductInfo.class, queryExpression);		  
+		  java.util.List<ProductInfo> list = dynamoDBMapper.scan(ProductInfo.class, scanExpression);
+		  System.out.println("Size : "+list.size());
 	        return list;
 	    }
 	 
