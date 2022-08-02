@@ -12,6 +12,7 @@ com\command\service\repository\BidRepository.class
 com\command\service\config\DynamoDBRepository.class
 com\command\service\vo\BidingDO.class
 com\command\service\kafka\KafkaReceiver.class
+com\command\service\config\SpringFoxConfig.class
 com\command\service\kafka\KafkaSender.class
 com\command\service\dao\impl\TransactionImpl.class
 com\command\service\vo\ProductVO.class
