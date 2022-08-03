@@ -55,9 +55,9 @@ public class BidingDO {
 		this.bidderName = bidderName;
 		this.bidAmount = bidAmount;
 	}
-	public BidingDO() {
-		super();
-	}
+	/*
+	 * public BidingDO() { super(); }
+	 */
 	
 	
 	
