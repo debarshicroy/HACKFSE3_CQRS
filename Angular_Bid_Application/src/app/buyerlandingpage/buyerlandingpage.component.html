@@ -6,7 +6,7 @@
     <div [hidden]="submitted">
           <form [formGroup]="addBidForm">
             <div class="form-group">
-              <label for="productname">Product Category</label>
+              <label for="productCategory">Product Category</label>
               <select class="form-control" id="pCategory" required name="pCategory"  formControlName="productCategory" (change)="pcategory()">
                 <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
               </select>
@@ -18,41 +18,41 @@
             <div class="form-group">
                 <label for="productName">List of Products based on Category</label>
                 <select class="form-control" id="productName" required name="productName"  formControlName="productName" (change)="getProductInfo()">
-                  <option *ngFor="let product of productsObj" [value]="product.id">{{product.name}}</option>
+                  <option *ngFor="let product of productsObj" [value]="product.name">{{product.name}}</option>
                 </select>
                <div *ngIf="addBidForm.controls['productName'].touched && addBidForm.controls['productName'].errors?.required">Name is required</div>
-               <div *ngIf="addBidForm.controls['productName'].errors?.maxlength">Max length 5 characters</div>
+               <!-- <div *ngIf="addBidForm.controls['productName'].errors?.maxlength">Max length 30 characters</div> -->
               </div>
               <div class="form-group">
-                <label for="productname">First Name</label>
+                <label for="firstName">First Name</label>
                 <input type="text"  class="form-control" id="firstName" formControlName="firstName"
                        required name="firstName">
                <div *ngIf="addBidForm.controls['firstName'].touched && addBidForm.controls['firstName'].errors?.required">First Name is required</div>
                <div *ngIf="addBidForm.controls['firstName'].errors?.maxlength">Max length 5 characters</div>
               </div>
               <div class="form-group">
-                <label for="productname">Last Name</label>
+                <label for="lastName">Last Name</label>
                 <input type="text" class="form-control" id="lastName" formControlName="lastName"
                        required name="lastName">
                <div *ngIf="addBidForm.controls['lastName'].touched && addBidForm.controls['lastName'].errors?.required">Last Name is required</div>
                <div *ngIf="addBidForm.controls['lastName'].errors?.maxlength">Max length 5 characters</div>
               </div>
               <div class="form-group">
-                <label for="productname">Email </label>
-                <input type="text" class="form-control" id="lastName" formControlName="email"
+                <label for="email">Email </label>
+                <input type="text" class="form-control" id="email" formControlName="email"
                        required name="email">
                <div *ngIf="addBidForm.controls['email'].touched && addBidForm.controls['email'].errors?.required">email is required</div>
                <div *ngIf="addBidForm.controls['email'].errors?.email">Invalid email</div>
               </div>
               <div class="form-group">
-                <label for="productname">Mobile No </label>
+                <label for="mobileNo">Mobile No </label>
                 <input (keypress)="keyPress($event)" type="text" class="form-control" id="mobileNo" formControlName="mobileNo"
                        required name="mobileNo">
                <div *ngIf="addBidForm.controls['mobileNo'].touched && addBidForm.controls['mobileNo'].errors?.required">Mobile No is required</div>
                <div *ngIf="addBidForm.controls['mobileNo'].errors?.email">Invalid Mobile No</div>
               </div>
               <div class="form-group">
-                <label for="productname">Pin Code</label>
+                <label for="pincode">Pin Code</label>
                 <input (keypress)="keyPress($event)" type="text" class="form-control" id="pincode" formControlName="pincode"
                        required name="pincode">
                <div *ngIf="addBidForm.controls['pincode'].touched && addBidForm.controls['pincode'].errors?.required">pincode is required</div>
@@ -68,7 +68,7 @@
               <div class="form-group">
                 <label for="Price">Price</label>
                 <input (keypress)="keyPress($event)" type="text" class="form-control" id="price" formControlName="price"
-                       required name="productName">
+                       required name="price">
                <div *ngIf="addBidForm.controls['price'].touched && addBidForm.controls['price'].errors?.required">price is required</div>
                <div *ngIf="addBidForm.controls['price'].errors?.maxlength">Max length 5 characters</div>
               </div>
@@ -89,3 +89,5 @@
           </form>
        </div>
     </div>
+
+    <!-- [disabled]="addBidForm.invalid" -->

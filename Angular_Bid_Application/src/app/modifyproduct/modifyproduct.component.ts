@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { biddercloudALBurl_8081 } from 'src/environments/environment.prod';
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { AppService } from '../app.service';
 
@@ -37,7 +38,7 @@ export class ModifyproductComponent implements OnInit {
   dataSource = new MatTableDataSource<any>([]);
   ngOnInit(): void {
     console.log('inside the modify product');
-    let url ="http://localhost:8081/showProducts";
+    let url =biddercloudALBurl_8081+"showProducts";
     this.http.get(url,{responseType:'json'}).subscribe(x =>{
       this.BiddingElement.push(x);
       this.data = x;
@@ -54,7 +55,7 @@ export class ModifyproductComponent implements OnInit {
     let message = 'You Cant Delete a product after bid end date';
     this.alertDialog(message);
     }else{
-      let url ='http://localhost:8081/delete/'+row['name'];
+      let url =biddercloudALBurl_8081+'delete/productName='+row['name'];
       this.http.get(url,{responseType:'text'}).subscribe(x =>{
         this.alertDialog(x);
       });

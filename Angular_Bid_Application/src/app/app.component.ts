@@ -3,7 +3,7 @@ import { VERSION } from '@angular/material/core';
 //import { MatSnackBar } from '@angular/material';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { AppService } from './app.service';
 
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit{
   constructor(private dialog: MatDialog,
     private snackBar: MatSnackBar,
     private appService: AppService,
-    private router : Router){
+    private router:Router){
 
   }
   tokens: any ={
@@ -50,7 +50,6 @@ export class AppComponent implements OnInit{
         console.log('access token -->'+this.tokens['access_token']);
         sessionStorage.setItem('accessToken',this.tokens['access_token']);
         this.cognitoResponseObj = jwtDecode(this.tokens['access_token']);
-                
         this.userName = this.cognitoResponseObj['username'];
         this.appService.userInfoDetails(this.userName);
         sessionStorage.setItem('jwtexpiryTime',this.tokens['exp']);
@@ -63,15 +62,12 @@ export class AppComponent implements OnInit{
             this.router.navigateByUrl("/seller");
           }
         }
-        
       });
+      this.router.navigateByUrl("/home");
       console.log("jwtToken in app component---------->"+sessionStorage.getItem('jwtToken'));
     }
   }
-  /*assignUrl(){
-    let url='https://codehackfseverify.auth.us-east-1.amazoncognito.com/login?client_id=11msjde8bjnu12f4chriuidrju&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:4200/home';
-    window.location.assign(url);
-  }*/
+  
   
 }
 

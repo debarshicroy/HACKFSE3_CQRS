@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { biddercloudALBurl_8081 } from 'src/environments/environment.prod';
 import { AlertDialogComponent } from '../alert-dialog/alert-dialog.component';
 import { AppService } from '../app.service';
 
@@ -28,7 +29,7 @@ export class AddproductComponent implements OnInit {
       productName: ['', [Validators.required,Validators.minLength(5) ,Validators.maxLength(30)]],
       shortproductdesc: ['', [Validators.required,Validators.maxLength(50)]],
       detailedproductdesc: ['', [Validators.required,Validators.maxLength(500)]],
-      price: ['', [Validators.required,Validators.pattern("^[0-9]*$")]],
+      price: ['', [Validators.required,Validators.pattern("^[0-9.]*$")]],
       pincode: ['', [Validators.required,Validators.pattern("^[0-9]*$"),Validators.maxLength(6)]],
       bidEndDate: ['', [Validators.required]],
       stateName:['', [Validators.required]],
@@ -66,7 +67,7 @@ export class AddproductComponent implements OnInit {
   reqBody: any ={"name":"","short_desc":"","detailed_desc":"","category":"","price":0,"bidEndDate":new Date()};
   onSubmit() { 
     //this.showPopUp = true;
-    let url: any ='http://localhost:8081/add-product';
+    let url: any =biddercloudALBurl_8081+'add-product';
     this.reqBody['name']=this.addProductForm.controls['productName'].value;
     this.reqBody['short_desc']=this.addProductForm.controls['shortproductdesc'].value;
     this.reqBody['detailed_desc']=this.addProductForm.controls['detailedproductdesc'].value;

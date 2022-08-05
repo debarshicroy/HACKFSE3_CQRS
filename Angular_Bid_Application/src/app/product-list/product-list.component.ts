@@ -10,6 +10,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { HttpClient } from '@angular/common/http';
+import { biddercloudALBurl_8081, sellercloudALBurl_8082 } from 'src/environments/environment.prod';
 
 
 export interface BiddersInfo {
@@ -37,7 +38,7 @@ export class ProductListComponent implements OnInit {
     Email: [],
     knownlang: this.fb.array([this.fb.control('')]),
   });
-  displayedColumns: string[] = ['id', 'productName','bidderName','bidAmount'];//, 'mobile', 'email'];
+  displayedColumns: string[] = ['id', 'name','bidderName','bidAmount'];//, 'mobile', 'email'];
   showBid: boolean = false;
   isSubmitted = false;
   showProductInfo: boolean = false;
@@ -54,7 +55,7 @@ export class ProductListComponent implements OnInit {
     dataSource = new MatTableDataSource<any>([]);
    ngOnInit() {
     //this.dataSource.sort = this.sort;
-    let url ='http://localhost:8082/showAllbids';
+    let url =sellercloudALBurl_8082+'showAllbids';
     this.http.get(url,{responseType:'json'}).subscribe(x =>{
     this.BiddersInfo.push(x);
     this.data = x

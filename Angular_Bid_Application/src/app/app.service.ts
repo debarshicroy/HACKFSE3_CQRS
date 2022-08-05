@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { cognitoUrl, redirectUrl } from 'src/environments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
@@ -30,22 +31,21 @@ export class AppService {
   }
 
   assignUrl() {
-    //let url = 'https://codehackfseverify.auth.us-east-1.amazoncognito.com/login?client_id=11msjde8bjnu12f4chriuidrju&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=http://localhost:4200/home';
-    let url = 'https://eauction1.auth.us-east-1.amazoncognito.com/login?client_id=5o0a85us2mgotd14k3pmfbd6ns&response_type=code&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://d11363ooaqsnz3.cloudfront.net/';
+    //let url = 'https://democognizantfse.auth.us-east-1.amazoncognito.com/login?client_id=1qr4pobuop3it7jht1m3fdji7e&response_type=code&scope=phone+email+openid+aws.cognito.signin.user.admin+profile&redirect_uri=https://d1ti25q8fcxbym.cloudfront.net/';
+    //let url = 'https://democognizantfse.auth.us-east-1.amazoncognito.com/login?client_id=1qr4pobuop3it7jht1m3fdji7e&response_type=code&scope=phone+email+openid+aws.cognito.signin.user.admin+profile&redirect_uri=http://localhost:4200/';
+    let url = cognitoUrl+redirectUrl;
     window.location.assign(url);
   }
 
   getExchangeCodeForTokens(authorizationcode: string){
-    //const client_id ='11msjde8bjnu12f4chriuidrju';
-    //const domain ='codehackfseverify.auth.us-east-1.amazoncognito.com'
-    //const url = 'https://codehackfseverify.auth.us-east-1.amazoncognito.com/oauth2/token';
     const url = 'https://eauction1.auth.us-east-1.amazoncognito.com/oauth2/token';
     const param = new HttpParams({
       fromObject:{
         grant_type:'authorization_code',
-        client_id: '1qr4pobuop3it7jht1m3fdji7e',
+        client_id: '5o0a85us2mgotd14k3pmfbd6ns',
         code: authorizationcode,
-        redirect_uri:'http://localhost:4200/home'
+        //redirect_uri:'https://d1ti25q8fcxbym.cloudfront.net/'
+        redirect_uri: redirectUrl
       },
     });
     const httpOptions ={

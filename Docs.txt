@@ -71,5 +71,5 @@ eriT5cS7
 
 
 
-mysqlsh -h auctiondb.cmkzbrtkkatj.us-east-1.rds.amazonaws.com -P 3306 -u admin
+mysqlsh -h auctiondb.cxcu7stcb9ac.us-east-1.rds.amazonaws.com -P 3306 -u admin
 mvn package docker:build docker:push -DskipTests
