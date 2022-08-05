@@ -35,7 +35,7 @@ public class BidingDO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	@DynamoDBHashKey
+	
 	@DynamoDBAttribute
 	public String getName() {
 		return name;
@@ -43,6 +43,7 @@ public class BidingDO {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@DynamoDBHashKey
 	@DynamoDBAttribute
 	public String getBidderName() {
 		return bidderName;

@@ -25,7 +25,7 @@ public class ProductController {
 	@PostMapping("/add-product")
 	public String registerProduct(@RequestBody ProductVO product) {
 		//ProductVO pd = new ProductVO("sample123", "sample sd123456", "sample dd123000", "sample cat123", 100, new Date());
-		product.setBidEndDate(new Date());
+		//product.setBidEndDate(new Date());
 		System.out.println("Going to add product:"+product.toString());
 		ProductVO vo = interface1.saveProduct(product);
 		
