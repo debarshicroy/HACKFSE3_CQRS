@@ -94,9 +94,9 @@ public class ProductInfo {
 		this.price = price;
 		this.bidEndDate = bidEndDate;
 	}
-	public ProductInfo() {
-		super();
-	}
+	/*
+	 * public ProductInfo() { super(); }
+	 */
 	
 	
 	
