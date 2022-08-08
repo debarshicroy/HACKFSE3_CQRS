@@ -73,10 +73,10 @@
 <div *ngIf="showBid" class="example-container">
   <table mat-table  [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <ng-container matColumnDef="id">
+    <!-- <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef> ID</th>
       <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    </ng-container>
+    </ng-container> -->
     
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> productName</th>
@@ -91,6 +91,31 @@
     <ng-container matColumnDef="bidderName">
       <th mat-header-cell *matHeaderCellDef> Bidder Name </th>
       <td mat-cell *matCellDef="let element"> {{element.bidderName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bidderEmailId">
+      <th mat-header-cell *matHeaderCellDef> Bidder Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidderEmailId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bidderPhNo">
+      <th mat-header-cell *matHeaderCellDef> Bidder Ph </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidderPhNo}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bidderAdd">
+      <th mat-header-cell *matHeaderCellDef> Bidder Add </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidderAdd}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bidderPincode">
+      <th mat-header-cell *matHeaderCellDef> Pincode </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidderPincode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="bidderState">
+      <th mat-header-cell *matHeaderCellDef> State </th>
+      <td mat-cell *matCellDef="let element"> {{element.bidderState}} </td>
     </ng-container>
    
 

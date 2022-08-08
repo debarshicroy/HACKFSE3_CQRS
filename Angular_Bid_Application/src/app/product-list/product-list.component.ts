@@ -38,7 +38,7 @@ export class ProductListComponent implements OnInit {
     Email: [],
     knownlang: this.fb.array([this.fb.control('')]),
   });
-  displayedColumns: string[] = ['id', 'name','bidderName','bidAmount'];//, 'mobile', 'email'];
+  displayedColumns: string[] = ['name','bidderName','bidAmount','bidderEmailId','bidderPhNo','bidderAdd','bidderPincode','bidderState'];//, 'mobile', 'email'];
   showBid: boolean = false;
   isSubmitted = false;
   showProductInfo: boolean = false;

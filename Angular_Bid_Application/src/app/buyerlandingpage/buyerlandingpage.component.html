@@ -61,7 +61,7 @@
               <div class="form-group">
                 <label for="stateName">State City</label>
                 <select class="form-control" id="stateName" required name="stateName" formControlName="stateName">
-                  <option *ngFor="let states of statesObj" [value]="pow">{{states.toponymName}}</option>
+                  <option *ngFor="let states of statesObj" [ngValue]="states">{{states.toponymName}}</option>
                 </select>
                <div *ngIf="addBidForm.controls['stateName'].touched && addBidForm.controls['stateName'].errors?.required">State Name is required</div>
               </div>

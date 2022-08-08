@@ -125,7 +125,14 @@ export class BuyerlandingpageComponent implements OnInit {
      let url: any =biddercloudALBurl_8081+'place-bid';
      this.bidReqObj['productName'] = this.prdtName;
      this.bidReqObj['bidderName'] = this.addBidForm.controls['firstName'].value + " "+this.addBidForm.controls['lastName'].value;
-     this.bidReqObj['bidAmount'] = this.addBidForm.controls['price'].value; 
+     this.bidReqObj['bidAmount'] = this.addBidForm.controls['price'].value;
+     this.bidReqObj['bidderEmailId'] = this.addBidForm.controls['email'].value; 
+     this.bidReqObj['bidderPhNo'] = this.addBidForm.controls['mobileNo'].value; 
+     this.bidReqObj['bidderAdd'] = this.addBidForm.controls['address'].value; 
+     this.bidReqObj['bidderPincode'] = this.addBidForm.controls['pincode'].value; 
+     this.bidReqObj['bidderState'] = this.addBidForm.controls['stateName'].value.name; 
+
+
      this.http.post(url,this.bidReqObj,{ responseType:'text'}).subscribe(data =>{
        console.log("data"+data);
        this.alertDialog("Placed Bid SuccessFully");
